@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class main : MonoBehaviour {
 
@@ -48,7 +49,7 @@ public class main : MonoBehaviour {
 
     private void Awake()
     {
-        showe.Show(new string[]{ "Privet", "Hey"});
+        showe.Show(new string[]{ "Привет, меня зовут Елена. Я буду твоим партнером. Перед тем, как мы сможем взломать сервера Sony и Microsoft, нам необходимо потренироватьься на более легки целях. Также, нам необходимо улучшить наш софт, так что, в любом случае нам нужны деньги", "Наша цель - In_Client. Унего примитивная защита, кроме того, я собрала информацию о его директоре. Ты можешь прочитать ее в файле, который наодится в папке на рабочем столе. Прочитай ее внимательно , так как нам придется поддбирать пароль. После этого открой cmd на рабочем столе"});
     }
 
     void Start() {
@@ -145,8 +146,9 @@ public class main : MonoBehaviour {
     {
         if (logins.text == "Антон1984" && password.text=="Fire1965")
         {
-            
-            wrong_panel.gameObject.SetActive(true);
+
+            showe.Show("Неправильный пароль?!Да, это было бы слишком просто. ОК, я отправлю брутфорс на твой компьютер. Попробуешь взломать его аккаунт.");
+            bruteforce.gameObject.SetActive(true);
             password.text = VALUE.ToString();
             password.text = string.Empty;
 
@@ -195,10 +197,7 @@ public class main : MonoBehaviour {
        panel.gameObject.SetActive(false);
     }
 
-    public void OK_bank()
-    {
-
-    }
+   
 
 
     public void cmd_open()
@@ -208,7 +207,7 @@ public class main : MonoBehaviour {
             panel.gameObject.SetActive(true);
         if (cmd_window == 0)
         {
-            showe.Show("Хорошо, сейчас напиши \"connect 192.168.13.37\" и нажми Enter.");
+            showe.Show("ОК, теперь введи\"connect 192.168.13.37\" и нажми Enter. После этого тебе надо будет ввести пароль. Можешь проверить файл на рабочем столе, если забыл возмодные пароли. (Нам не нужно чистить логи сейчас, ибо они даже не знают, что это");
 
             cmd_window++;
         }
@@ -223,7 +222,7 @@ public class main : MonoBehaviour {
 
     public void cmd1()
     {
-        if (cmd_2.text == "connect 192.168.13.37" && Input.GetKey(KeyCode.Return) && cmd_text == 0 || cmd_2.text == "connect 192.168.13.37" && Input.GetKeyDown("enter") && cmd_text == 0)
+        if (cmd_2.text == "connect 192.168.13.37" && Input.GetKey(KeyCode.Return) && cmd_text == 0 || cmd_2.text == "connect 192.168.13.37" && Input.GetKeyDown("enter") && cmd_text == 0 || cmd_2.text == "Connect 192.168.13.37" && Input.GetKeyDown("enter") && cmd_text == 0 || cmd_2.text == "Connect 192.168.13.37" && Input.GetKey(KeyCode.Return) && cmd_text == 0)
         {
 
             cmd.text += "Mirracle@ubantu: " + cmd_2.text + "\n";
@@ -236,15 +235,14 @@ public class main : MonoBehaviour {
             cmd_2.text = "";
         }
         
-        if(cmd_2.text == "Fire1965"&&cmd_text==1 && Input.GetKey(KeyCode.Return))
+        if(cmd_2.text == "24011965"&&cmd_text==1 && Input.GetKey(KeyCode.Return))
         {
             cmd.text += "Mirracle@ubantu: " + cmd_2.text + "\n";
             cmd.text += "Пароль верен\n";
             cmd_text = 2;
             cmd_window++;
             cmd_2.text = "";
-            accept2.gameObject.SetActive(true);
-
+            showe.Show(new string[] { "Отличная работа! Мы вошли. Теперь мы можем украсть его логин и пароль от банковского счета. Если често, я уже его вламывала и знаю, где находится файл с логином и паролем, но на твоих следующих заданиях тебе придется искать файл самому. ","Теперь введи в cmd \"C:/documents/bank/logs.txt\" чтобы получить этот файл. Он будет автоматически скачан и размещен на твоем рабочем столе."});
         }
 
         if(cmd_2.text == "C:/documents/bank/logs.txt" && cmd_text==2&&  Input.GetKey(KeyCode.Return))
@@ -254,10 +252,9 @@ public class main : MonoBehaviour {
             cmd_2.text = "";
             cmd_text = 3;
             // сделать окно о появление файла
+            showe.Show("Хммм... Странно, но у него почти такой же пароль. Ладно, попробуй его.");
             logs.gameObject.SetActive(true);
         }
-        
-           
     }
     
     public void brut_cl()
@@ -265,8 +262,6 @@ public class main : MonoBehaviour {
         bruteforce.gameObject.SetActive(true);
         wrong_panel.gameObject.SetActive(false);
         panel.gameObject.SetActive(true);
-
-
     }
     public void cmd_win()
     {
@@ -286,6 +281,12 @@ public class main : MonoBehaviour {
         VALUE = 54687;
         passwordbrut.text = VALUE.ToString();
         isStarted = false;
+    }
+
+
+    public void bank_next()
+    {
+        SceneManager.LoadScene("Bomj2");
     }
 }
     

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_scenes/bomj.unity
     guid: e1aae06e87010b34f9e4f3b592eae9d3
+  - enabled: 1
+    path: Assets/_scenes/Bomj2.unity
+    guid: ad6ab316a76eb764790096f26fcaa070
   m_configObjects: {}
